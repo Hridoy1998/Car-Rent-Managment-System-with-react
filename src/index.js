@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Number from './Components/numberInput'
-import Nav from './Components/Admin/nav';
+import NavScrollExample from './Components/Admin/nav';
 import Approvals from './Components/Admin/Approvals';
 import BlockUser from './Components/Admin/Block_User';
 import CarAddByAdmin from './Components/Admin/Car_Add_By_Admin';
@@ -20,13 +20,14 @@ import RenterList from './Components/Admin/Renter_List';
 import Reviews from './Components/Admin/Reviews';
 import UserAddByAdmin from './Components/Admin/User_Add_By_Admin';
 import Footer from './Components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Admin, Route,Switch} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Admin>
-      <Nav/>
+      <NavScrollExample/>
         <Switch>
           <Route exact path={"/"}><Profile/></Route>
           <Route exact path={"/Approvals"}><Approvals/></Route>
@@ -44,7 +45,7 @@ root.render(
           <Route exact path={"/Reviews"}><Reviews/></Route>
           <Route exact path={"/UserAddByAdmin"}><UserAddByAdmin/></Route> 
         </Switch>
-        <Number numbers="187678905"/>
+        <Number numbers="1000"/>
       <Footer/>
     </Admin>
     
