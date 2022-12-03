@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Nav=()=>{
     return(
         <div>
-            <Link to="/Profile">Profile</Link>&nbsp;&nbsp;
+            <Link to="/">Profile</Link>&nbsp;&nbsp;
             <Link to="/BlockUser">Block Users List</Link>&nbsp;&nbsp;
             <Link to="/UserAddByAdmin">Users Add By Admin</Link>&nbsp;&nbsp;
             <Link to="/RenterList">Renter List</Link>&nbsp;&nbsp;

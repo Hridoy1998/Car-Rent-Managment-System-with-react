@@ -28,21 +28,21 @@ root.render(
     <Admin>
       <Nav/>
         <Switch>
-          <Route path={"/Profile"}><Profile/></Route>
-          <Route path={"/Approvals"}><Approvals/></Route>
-          <Route path={"/BlockUser"}><BlockUser/></Route>
-          <Route path={"/CarAddByAdmin"}><CarAddByAdmin/></Route>
-          <Route path={"/CarList"}><CarList/></Route>
-          <Route path={"/CustomerList"}><CustomerList/></Route>
-          <Route path={"/Logout"}><Logout/></Route>
-          <Route path={"/Messages"}><Messages/></Route>
-          <Route path={"/NoticeList"}><NoticeList/></Route>
-          <Route path={"/Notices"}><Notices/></Route>
-          <Route path={"/PostManage"}><PostManage/></Route>
-          <Route path={"/RentHistory"}><RentHistory/></Route>
-          <Route path={"/RenterList"}><RenterList/></Route>
-          <Route path={"/Reviews"}><Reviews/></Route>
-          <Route path={"/UserAddByAdmin"}><UserAddByAdmin/></Route> 
+          <Route exact path={"/"}><Profile/></Route>
+          <Route exact path={"/Approvals"}><Approvals/></Route>
+          <Route exact path={"/BlockUser"}><BlockUser/></Route>
+          <Route exact path={"/CarAddByAdmin"}><CarAddByAdmin/></Route>
+          <Route exact path={"/CarList"}><CarList/></Route>
+          <Route exact path={"/CustomerList"}><CustomerList/></Route>
+          <Route exact path={"/Logout"}><Logout/></Route>
+          <Route exact path={"/Messages"}><Messages/></Route>
+          <Route exact path={"/NoticeList"}><NoticeList/></Route>
+          <Route exact path={"/Notices"}><Notices/></Route>
+          <Route exact path={"/PostManage"}><PostManage/></Route>
+          <Route exact path={"/RentHistory"}><RentHistory/></Route>
+          <Route exact path={"/RenterList"}><RenterList/></Route>
+          <Route exact path={"/Reviews"}><Reviews/></Route>
+          <Route exact path={"/UserAddByAdmin"}><UserAddByAdmin/></Route> 
         </Switch>
         <Number numbers="187678905"/>
       <Footer/>
