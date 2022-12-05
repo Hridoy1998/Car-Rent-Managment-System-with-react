@@ -15,13 +15,14 @@ const RenterList=()=>{
        .catch((error)=>{
         alert(error)
        });
-    });
+    },[]);
     return(
         <div>
             <h1>This Is Renter List </h1>
              <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th>Profile Pic</th>
                         <th>Name</th>
                         <th>Title</th>
                         <th>Address</th>
@@ -36,6 +37,9 @@ const RenterList=()=>{
                         {
                             renter.map(post=>(
                                     <tr key={post.id}>
+                                        <td>
+                                        <img src={post.pp} />
+                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <img

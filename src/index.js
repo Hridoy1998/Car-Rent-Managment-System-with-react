@@ -35,7 +35,7 @@ root.render(
       <Admin>
         <Adminnav/>
           <Switch>
-            <Route exact path={"/"}><Profile/></Route>
+            <Route exact path={"/profile"}><Profile/></Route>
             <Route exact path={"/Approvals"}><Approvals/></Route>
             <Route exact path={"/BlockUser"}><BlockUser/></Route>
             <Route exact path={"/CarAddByAdmin"}><CarAddByAdmin/></Route>
@@ -50,6 +50,7 @@ root.render(
             <Route exact path={"/RenterList"}><RenterList/></Route>
             <Route exact path={"/Reviews"}><Reviews/></Route>
             <Route exact path={"/UserAddByAdmin"}><UserAddByAdmin/></Route> 
+            <Route exact path={"/Login"}><Login/></Route> 
           </Switch>
           <Number numbers="1000"/>
       </Admin>
@@ -65,9 +66,9 @@ root.render(
             {/* renter Route. */}
           </Switch>
       </Renter>
-      <Footer/>
     </Common>
-    
+      <Footer/>
+
   </React.StrictMode>
 );
 

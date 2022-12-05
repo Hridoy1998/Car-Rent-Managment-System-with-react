@@ -10,7 +10,7 @@ function Adminnav() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand ><Link to="/">Profile</Link></Navbar.Brand>
+        <Navbar.Brand ><Link to="/profile">Profile</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -45,20 +45,19 @@ function Adminnav() {
               <Link to="/Reviews">Reviews Manage</Link>
             </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item >
-              <Link to="/Logout">Logout</Link>
-              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          {/* <Form className="d-flex">
-            <Form.Control
+           <Form className="d-flex">
+            {/* <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form> */}
+            /> */}
+            
+            <Button variant="outline-success"><Nav.Link><Link to="/Logout">Logout</Link></Nav.Link></Button>
+            <Button variant="outline-success"><Nav.Link><Link to="/Login">Login</Link></Nav.Link></Button>
+          </Form> 
         </Navbar.Collapse>
       </Container>
     </Navbar>

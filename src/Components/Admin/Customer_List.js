@@ -22,6 +22,7 @@ const CustomerList=()=>{
             <Table striped bordered hover>
             <thead>
                 <tr>
+                    <th>Profile Pic</th>
                     <th>Name</th>
                     <th>Title</th>
                     <th>Address</th>
@@ -37,12 +38,10 @@ const CustomerList=()=>{
                             customer.map(post=>(
                                     <tr key={post.id}>
                                         <td>
+                                        <img src={post.pp} />
+                                        </td>
+                                        <td>
                                             <div class="d-flex align-items-center">
-                                                <img
-                                                    src={post.pp}
-                                                    alt=""
-                                                    class="rounded-circle"
-                                                    />
                                                 <div class="ms-3">
                                                     <p >{ post.first_name +" "+ post.last_name}</p>
                                                     <p >{ post.username }</p>
