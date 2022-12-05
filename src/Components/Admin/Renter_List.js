@@ -15,23 +15,23 @@ const RenterList=()=>{
        .catch((error)=>{
         alert(error)
        });
-    },[]);
+    });
     return(
         <div>
             <h1>This Is Renter List </h1>
              <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Address</th>
-                    <th>NID</th>
-                    <th>DL number</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                    <th></th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Address</th>
+                        <th>NID</th>
+                        <th>DL number</th>
+                        <th>Position</th>
+                        <th>Action</th>
+                        <th></th>
+                    </tr>
+                </thead>
                     <tbody>
                         {
                             renter.map(post=>(

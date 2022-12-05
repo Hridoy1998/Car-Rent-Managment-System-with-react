@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const CustomerList=()=>{
     const [customer, setCustomer] = useState([]);
     useEffect(() => {
-       axios.get("http://127.0.0.1:8000/api/Admin_custorans_List")
+       axios.get("http://127.0.0.1:8000/api/custorans_List")
        .then((result) => {
         console.log(result)
         setCustomer(result.data);
