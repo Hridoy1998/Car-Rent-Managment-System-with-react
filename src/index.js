@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Number from './Components/numberInput'
-import Adminnav from './Components/Admin/nav';
 import Approvals from './Components/Admin/Approvals';
 import BlockUser from './Components/Admin/Block_User';
 import CarAddByAdmin from './Components/Admin/Car_Add_By_Admin';
@@ -23,51 +21,60 @@ import Login from './Components/Login';
 import Logout from './Components/Logout';
 import Registration from './Components/Registration';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Admin, Route,Switch} from 'react-router-dom';
+import { BrowserRouter as Admin, Route,Routes} from 'react-router-dom';
 import { BrowserRouter as Customer} from 'react-router-dom';
 import { BrowserRouter as Renter} from 'react-router-dom';
-import { BrowserRouter as Common} from 'react-router-dom';
+import { BrowserRouter as Main} from 'react-router-dom';
+import Home from './Components/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Common>
-      <Admin>
-        <Adminnav/>
-          <Switch>
-            <Route exact path={"/profile"}><Profile/></Route>
-            <Route exact path={"/Approvals"}><Approvals/></Route>
-            <Route exact path={"/BlockUser"}><BlockUser/></Route>
-            <Route exact path={"/CarAddByAdmin"}><CarAddByAdmin/></Route>
-            <Route exact path={"/CarList"}><CarList/></Route>
-            <Route exact path={"/CustomerList"}><CustomerList/></Route>
-            <Route exact path={"/Logout"}><Logout/></Route>
-            <Route exact path={"/Messages"}><Messages/></Route>
-            <Route exact path={"/NoticeList"}><NoticeList/></Route>
-            <Route exact path={"/Notices"}><Notices/></Route>
-            <Route exact path={"/PostManage"}><PostManage/></Route>
-            <Route exact path={"/RentHistory"}><RentHistory/></Route>
-            <Route exact path={"/RenterList"}><RenterList/></Route>
-            <Route exact path={"/Reviews"}><Reviews/></Route>
-            <Route exact path={"/UserAddByAdmin"}><UserAddByAdmin/></Route> 
-            <Route exact path={"/Login"}><Login/></Route> 
-          </Switch>
-          <Number numbers="1000"/>
-      </Admin>
 
-      <Customer>
-          <Switch>
-            {/* Customer Route. */}
-          </Switch>
+  <React.StrictMode>
+    <Main>
+    <Routes>
+      <Route exact path="/" element={<Home/>}/>
+      <Route exact path="/Login" element={<Login/>}/>
+    
+       {/* <Admin> */}
+          {/* <Routes/> */}
+          {/* <Adminnav/> */}
+            <Route exact path="/profile"element={<Profile/>}/>
+            <Route exact path="/Approvals" element={<Approvals/>}/>
+            <Route exact path="/BlockUser" element={<BlockUser/>}/>
+            <Route exact path="/CarAddByAdmin" element={<CarAddByAdmin/>}/>
+            <Route exact path="/CarList" element={<CarList/>}/>
+            <Route exact path="/CustomerList" element={<CustomerList/>}/>
+            <Route exact path="/Logout" element={<Logout/>}/>
+            <Route exact path="/Messages" element={<Messages/>}/>
+            <Route exact path="/NoticeList" element={<NoticeList/>}/>
+            <Route exact path="/Notices" element={<Notices/>}/>
+            <Route exact path="/PostManage" element={<PostManage/>}/>
+            <Route exact path="/RentHistory" element={<RentHistory/>}/>
+            <Route exact path="/RenterList" element={<RenterList/>}/>
+            <Route exact path="/Reviews" element={<Reviews/>}/>
+            <Route exact path="/UserAddByAdmin" element={<UserAddByAdmin/>}/>
+            <Route exact path="/Login" element={<Login/>}/>
+            <Route exact path="/Registration" element={<Registration/>}/>
+          {/* </Routes> */}
+          
+      {/* </Admin> */}
+
+      {/*<Customer>
+          <Routes>
+            Customer Route.
+          </Routes>
       </Customer>
 
       <Renter>
-          <Switch>
-            {/* renter Route. */}
-          </Switch>
-      </Renter>
-    </Common>
+          <Routes>
+            renter Route.
+          </Routes>
+      </Renter>  */}
+
+      </Routes>
       <Footer/>
+    </Main>
 
   </React.StrictMode>
 );

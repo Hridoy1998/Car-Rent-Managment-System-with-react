@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const Logout=()=>
 {
-    const navigate = useHistory();
+    const navigate = useNavigate();
     const [data, setData] = useState("");
 
     useEffect(()=>{
@@ -13,7 +13,7 @@ const Logout=()=>
         {
             setData(response.data);
             alert=("woring....!")
-            navigate.push('/RenterList');
+            navigate('/RenterList');
         },[])
         .catch((err)=>{
             console.log(err);

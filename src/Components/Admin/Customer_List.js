@@ -4,6 +4,7 @@ import { useEffect,useState } from "react";
 import axios  from "axios";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Adminnav from './nav';
 const CustomerList=()=>{
     const [customer, setCustomer] = useState([]);
     useEffect(() => {
@@ -18,6 +19,7 @@ const CustomerList=()=>{
     },[]);
     return(
         <div>
+            <Adminnav/>
             <h1>This Is Customer List Page</h1>
             <Table striped bordered hover>
             <thead>
@@ -41,8 +43,8 @@ const CustomerList=()=>{
                                         <img src={post.pp} />
                                         </td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms-3">
+                                            <div className="d-flex align-items-center">
+                                                <div className="ms-3">
                                                     <p >{ post.first_name +" "+ post.last_name}</p>
                                                     <p >{ post.username }</p>
                                                     <p >{  post.email }</p>

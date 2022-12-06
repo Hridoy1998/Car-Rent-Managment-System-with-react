@@ -4,6 +4,7 @@ import { useEffect,useState } from "react";
 import axios  from "axios";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Adminnav from './nav';
 const BlockUser=()=>{
     const [blockUser, setBlockUser] = useState([]);
     useEffect(() => {
@@ -18,6 +19,7 @@ const BlockUser=()=>{
     },[]);
     return(
         <div>
+            <Adminnav/>
             <h1>This Is Block User Page</h1>
             <Table striped bordered hover>
             <thead>
@@ -41,8 +43,8 @@ const BlockUser=()=>{
                                         <img src={post.pp} />
                                         </td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms-3">
+                                            <div className="d-flex align-items-center">
+                                                <div className="ms-3">
                                                     <p >{ post.first_name +" "+ post.last_name}</p>
                                                     <p >{ post.username }</p>
                                                     <p >{  post.email }</p>

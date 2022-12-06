@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import HomeNave from "./HomeNave";
 
 const Registration = ()=>{
     let[token, setToken]= useState("");
@@ -37,6 +38,7 @@ const Registration = ()=>{
     }
     return(
         <div>
+            <HomeNave/>
             <form>
                 <br />
                 
