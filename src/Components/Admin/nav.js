@@ -5,14 +5,19 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, {Components} from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 function Adminnav() {
+  const navigate = useNavigate();
+  const goLogout=()=>{
+    navigate("/logout")
+  }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand ><Link to="/">Home</Link></Navbar.Brand>
-        <Navbar.Brand ><Link to="/Profile">Profile</Link></Navbar.Brand>
+        <Navbar.Brand ><Link to="/AdminProfile">Profile</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -57,7 +62,7 @@ function Adminnav() {
               aria-label="Search"
             /> */}
             
-            <Button variant="outline-success"><Nav.Link as={Link} to="/Logout">Logout</Nav.Link></Button>
+            <Button variant="outline-success" onClick={goLogout}>Logout</Button>
             {/* <Button variant="outline-success"><Nav.Link><Link to="/Login">Login</Link></Nav.Link></Button> */}
           </Form> 
         </Navbar.Collapse>

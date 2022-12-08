@@ -5,7 +5,9 @@ import axios  from "axios";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Adminnav from './nav';
+import { useNavigate } from 'react-router-dom';
 const RenterList=()=>{
+    const navigation = useNavigate();
     const [renter, serRenter] = useState([]);
     useEffect(() => {
        axios.get("http://127.0.0.1:8000/api/Renter_List")
@@ -17,6 +19,23 @@ const RenterList=()=>{
         alert(error)
        });
     },[]);
+    const Bruser=(id)=>()=>{
+        alert(id);
+    }
+    const Eruser=(id)=>()=>{
+        alert(id);
+    }
+    const Vruser=(id)=>()=>{
+        alert(id);
+        axios.get("http://127.0.0.1:8000/api/User_Details/{id}", {params:{id:id}})
+        .then(function (response) {
+            var data = response.data;
+            navigation("/SingleUserDetails",data);
+        })
+        .catch(function (error) {
+            alert(error);
+        })
+    }
     return(
         <div>
             <Adminnav/>
@@ -72,13 +91,13 @@ const RenterList=()=>{
                                         </td>
                                         <td>{  post.type }</td>
                                         <td>
-                                        <Button variant="primary"> EDIT</Button>
+                                        <Button variant="primary" onClick={Eruser(post.id)}> EDIT</Button>
                                         </td>
                                         <td>
-                                        <Button variant="danger"> BLOCK</Button>
+                                        <Button variant="danger" onClick={Bruser(post.id)}> BLOCK</Button>
                                         </td>
                                         <td>
-                                        <Button variant="primary">VIEW</Button>
+                                        <Button variant="primary" onClick={Vruser(post.id)}>VIEW</Button>
                                         </td>
                                     </tr>
                                     ))

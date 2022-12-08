@@ -17,6 +17,15 @@ const CustomerList=()=>{
         
        });
     },[]);
+    const Bcuser=(id)=>()=>{
+        alert(id);
+    }
+    const Vcuser=(id)=>()=>{
+        alert(id);
+    }
+    const Ecuser=(id)=>()=>{
+        alert(id);
+    }
     return(
         <div>
             <Adminnav/>
@@ -67,13 +76,13 @@ const CustomerList=()=>{
                                         </td>
                                         <td>{  post.type }</td>
                                         <td>
-                                        <Button variant="primary"> EDIT</Button>
+                                        <Button variant="primary" onClick={Ecuser(post.id)}> EDIT</Button>
                                         </td>
                                         <td>
-                                        <Button variant="danger"> BLOCK</Button>
+                                        <Button variant="danger" onClick={Bcuser(post.id)}> BLOCK</Button>
                                         </td>
                                         <td>
-                                        <Button variant="primary">VIEW</Button>
+                                        <Button variant="primary" onClick={Vcuser(post.id)}>VIEW</Button>
                                         </td>
                                     </tr>
                                     ))

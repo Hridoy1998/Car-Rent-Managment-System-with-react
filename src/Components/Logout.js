@@ -1,28 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Logout=()=>
 {
     const navigate = useNavigate();
-    const [data, setData] = useState("");
 
-    useEffect(()=>{
-        axios.put("http://localhost:8000/api/logout")
-        .then((response)=>
-        {
-            setData(response.data);
-            alert=("woring....!")
-            navigate('/RenterList');
-        },[])
-        .catch((err)=>{
-            console.log(err);
-            alert=("woring....!")
-        });
-        
-    });
     
-    localStorage.removeItem('user');
-    // navigate.push('/RenterList');
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    var obj = {token: user.access_token};
+
+        axios.post("http://localhost:8000/api/logout",obj)
+        .then(resp=>{
+            var token = resp.data;
+            console.log(token);
+            localStorage.removeItem('user');
+            navigate('/login');
+        }).catch(err=>{
+            console.log(err);
+        });
+
 }
 export default Logout;

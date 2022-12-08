@@ -11,7 +11,7 @@ import Messages from './Components/Admin/Messages';
 import NoticeList from './Components/Admin/Notice_List';
 import Notices from './Components/Admin/Notices';
 import PostManage from './Components/Admin/Post_Manage';
-import Profile from './Components/Admin/profile';
+import AdminProfile from './Components/Admin/profile';
 import RentHistory from './Components/Admin/Rent_History';
 import RenterList from './Components/Admin/Renter_List';
 import Reviews from './Components/Admin/Reviews';
@@ -19,13 +19,23 @@ import UserAddByAdmin from './Components/Admin/User_Add_By_Admin';
 import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Logout from './Components/Logout';
+import CProfile from './Components/Customer/customerprofile';
+import RProfile from './Components/Renter/renterrprofile';
 import Registration from './Components/Registration';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Admin, Route,Routes} from 'react-router-dom';
-import { BrowserRouter as Customer} from 'react-router-dom';
-import { BrowserRouter as Renter} from 'react-router-dom';
+import { Route,Routes} from 'react-router-dom';
+
 import { BrowserRouter as Main} from 'react-router-dom';
 import Home from './Components/Home';
+import UserDetails from './Components/Admin/UserDetails';
+import axios from 'axios';
+
+var token=null;
+if(localStorage.getItem('user')){
+  var obj = JSON.parse(localStorage.getItem('user'));
+  token = obj.access_token;
+}
+axios.defaults.headers.common["Authorization"] = token;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,16 +46,13 @@ root.render(
       <Route exact path="/" element={<Home/>}/>
       <Route exact path="/Login" element={<Login/>}/>
     
-       {/* <Admin> */}
-          {/* <Routes/> */}
-          {/* <Adminnav/> */}
-            <Route exact path="/profile"element={<Profile/>}/>
+            <Route exact path="/adminprofile"element={<AdminProfile/>}/>
             <Route exact path="/Approvals" element={<Approvals/>}/>
             <Route exact path="/BlockUser" element={<BlockUser/>}/>
             <Route exact path="/CarAddByAdmin" element={<CarAddByAdmin/>}/>
             <Route exact path="/CarList" element={<CarList/>}/>
             <Route exact path="/CustomerList" element={<CustomerList/>}/>
-            <Route exact path="/Logout" element={<Logout/>}/>
+            <Route exact path="/logout" element={<Logout/>}/>
             <Route exact path="/Messages" element={<Messages/>}/>
             <Route exact path="/NoticeList" element={<NoticeList/>}/>
             <Route exact path="/Notices" element={<Notices/>}/>
@@ -56,21 +63,9 @@ root.render(
             <Route exact path="/UserAddByAdmin" element={<UserAddByAdmin/>}/>
             <Route exact path="/Login" element={<Login/>}/>
             <Route exact path="/Registration" element={<Registration/>}/>
-          {/* </Routes> */}
-          
-      {/* </Admin> */}
-
-      {/*<Customer>
-          <Routes>
-            Customer Route.
-          </Routes>
-      </Customer>
-
-      <Renter>
-          <Routes>
-            renter Route.
-          </Routes>
-      </Renter>  */}
+            <Route exact path="/SingleUserDetails" element={<UserDetails/>}/>
+            <Route exact path="/Customer" element={<CProfile/>}/>
+            <Route exact path="/Renter" element={<RProfile/>}/>
 
       </Routes>
       <Footer/>

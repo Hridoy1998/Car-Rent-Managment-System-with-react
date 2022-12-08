@@ -2,11 +2,13 @@ import Button from 'react-bootstrap/Button'
 import React from "react";
 import { useEffect,useState } from "react";
 import axios  from "axios";
+import { useParams } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Adminnav from './nav';
 const BlockUser=()=>{
     const [blockUser, setBlockUser] = useState([]);
+    const [response, setResponse] = useState([]);
     useEffect(() => {
        axios.get("http://127.0.0.1:8000/api/Block_Users_List")
        .then((result) => {
@@ -16,7 +18,30 @@ const BlockUser=()=>{
        .catch((error)=>{
         
        });
-    },[]);
+    },[response]);
+    const ublock=(id)=>()=>{
+        console.log(id);
+        alert(id);
+        axios.get("http://127.0.0.1:8000/api/Unblock_Users/{id}",{params:{id:id}})
+        .then(function (response) {
+            alert("Successfully Unblock...")
+            console.log(response)
+        })
+        .catch(function (error) {
+            alert(error)
+        })
+    }
+
+    const vBlockUser=(id)=>()=>{
+        console.log(id);
+        alert(id);
+        axios.get("http://127.0.0.1:8000/api/BlockUser_Details/{id}",{params:{id}})
+        .then(function (res) {
+        })
+        .catch(function (err) {
+            alert("something Worng...!")
+        })
+    }
     return(
         <div>
             <Adminnav/>
@@ -67,10 +92,10 @@ const BlockUser=()=>{
                                         </td>
                                         <td>{  post.type }</td>
                                         <td>
-                                        <Button> UNBLOCK</Button>
+                                        <Button onClick={ublock(post.id)}> UNBLOCK</Button>
                                         </td>
                                         <td>
-                                        <Button>VIEW</Button>
+                                        <Button onClick={vBlockUser(post.id)}>VIEW</Button>
                                         </td>
                                     </tr>
                                     ))
