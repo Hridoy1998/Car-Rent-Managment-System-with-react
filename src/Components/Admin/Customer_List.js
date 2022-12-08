@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Adminnav from './nav';
 const CustomerList=()=>{
     const [customer, setCustomer] = useState([]);
+    const [count, setCount] = useState(0);
     useEffect(() => {
        axios.get("http://127.0.0.1:8000/api/custorans_List")
        .then((result) => {
@@ -16,9 +17,18 @@ const CustomerList=()=>{
        .catch((error)=>{
         
        });
-    },[]);
+    },[count]);
     const Bcuser=(id)=>()=>{
-        alert(id);
+        console.log(id);
+        axios.get("http://127.0.0.1:8000/api/Block_Users_List/{id}",{params:{id:id}})
+        .then(function (response) {
+            setCount(count + 1)
+            alert("Successfully block...")
+            console.log(response)
+        })
+        .catch(function (error) {
+            alert(error)
+        })
     }
     const Vcuser=(id)=>()=>{
         alert(id);

@@ -17,6 +17,10 @@ const Login = ()=>{
                 var obj = {email: email, password: password};
                 axios.post("http://127.0.0.1:8000/api/login",obj)
                 .then(resp=>{
+                    if(resp.data == "Block")
+                    {
+                        alert("The User has been Block !");
+                    }
                     var token = resp.data;
                     var user = {userId: token.userid, type:token.type, access_token:token.token};
                     localStorage.setItem('user',JSON.stringify(user));
@@ -24,12 +28,15 @@ const Login = ()=>{
                     // navigate.push('/view_car_list');
         
                     if(token.type=="Admin"){
+                        alert("login successful..");
                         navigate('/adminprofile');
                     }
                     else if(token.type=="Customer"){
+                        alert("login successful..");
                         navigate('/Customer');
                     }
                     else if(token.type=="Renter"){
+                        alert("login successful..");
                         navigate('/Renter');
                     }
                     

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const RenterList=()=>{
     const navigation = useNavigate();
     const [renter, serRenter] = useState([]);
+    const [count, setCount] = useState(0);
     useEffect(() => {
        axios.get("http://127.0.0.1:8000/api/Renter_List")
        .then((result) => {
@@ -18,9 +19,18 @@ const RenterList=()=>{
        .catch((error)=>{
         alert(error)
        });
-    },[]);
+    },[count]);
     const Bruser=(id)=>()=>{
-        alert(id);
+        console.log(id);
+        axios.get("http://127.0.0.1:8000/api/Block_Users_List/{id}",{params:{id:id}})
+        .then(function (response) {
+            setCount(count + 1)
+            alert("Successfully block...")
+            console.log(response)
+        })
+        .catch(function (error) {
+            alert(error)
+        })
     }
     const Eruser=(id)=>()=>{
         alert(id);
