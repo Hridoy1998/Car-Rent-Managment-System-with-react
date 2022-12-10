@@ -63,7 +63,7 @@ root.render(
             <Route exact path="/UserAddByAdmin" element={<UserAddByAdmin/>}/>
             <Route exact path="/Login" element={<Login/>}/>
             <Route exact path="/Registration" element={<Registration/>}/>
-            <Route exact path="/SingleUserDetails" element={<UserDetails/>}/>
+            <Route exact path="/SingleUserDetails/:userID" element={<UserDetails/>}/>
             <Route exact path="/Customer" element={<CProfile/>}/>
             <Route exact path="/Renter" element={<RProfile/>}/>
 

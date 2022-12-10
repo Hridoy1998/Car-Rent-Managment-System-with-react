@@ -4,8 +4,10 @@ import { useEffect,useState } from "react";
 import axios  from "axios";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 import Adminnav from './nav';
 const CustomerList=()=>{
+    const navigation = useNavigate();
     const [customer, setCustomer] = useState([]);
     const [count, setCount] = useState(0);
     useEffect(() => {
@@ -32,6 +34,7 @@ const CustomerList=()=>{
     }
     const Vcuser=(id)=>()=>{
         alert(id);
+        navigation('/SingleUserDetails',{id:id})
     }
     const Ecuser=(id)=>()=>{
         alert(id);
@@ -41,39 +44,44 @@ const CustomerList=()=>{
             <Adminnav/>
             <h1>This Is Customer List Page</h1>
             <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>Profile Pic</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Address</th>
-                    <th>NID</th>
-                    <th>DL number</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                    <th></th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th>Profile Pic</th>
+                        <th>Personal Info</th>
+                        <th>Details</th>
+                        <th>Address</th>
+                        <th>NID</th>
+                        <th>DL number</th>
+                        <th>Position</th>
+                        <th>Action</th>
+                        <th></th>
+                    </tr>
+                </thead>
                     <tbody>
                         {
                             customer.map(post=>(
                                     <tr key={post.id}>
                                         <td>
-                                        <img src={post.pp} />
+                                        <img src={post.pp} alt="foo is coming "/>
                                         </td>
                                         <td>
                                             <div className="d-flex align-items-center">
+                                                <img
+                                                    src={post.pp}
+                                                    alt=""
+                                                    className="rounded-circle"
+                                                    />
                                                 <div className="ms-3">
-                                                    <p >{ post.first_name +" "+ post.last_name}</p>
-                                                    <p >{ post.username }</p>
-                                                    <p >{  post.email }</p>
+                                                    <p >Name : { post.first_name +" "+ post.last_name}</p>
+                                                    <p >Username : { post.username }</p>
+                                                    <p >Email : {  post.email }</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p>{ post.dob }</p>
-                                            <p>{ post.gender}</p>
-                                            <p>{ post.phone_number }</p>
+                                            <p>Data Of Birth : { post.dob }</p>
+                                            <p>Gender : { post.gender}</p>
+                                            <p>Contact Number : { post.phone_number }</p>
                                         </td>
                                         <td>
                                             <p>{ post.address }</p>

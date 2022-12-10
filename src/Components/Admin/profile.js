@@ -25,9 +25,9 @@ const Profile=()=>{
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Profile Pic</th>
-                        <th>Name</th>
-                        <th>Title</th>
+                    <th>Profile Pic</th>
+                        <th>Personal Info</th>
+                        <th>Details</th>
                         <th>Address</th>
                         <th>NID</th>
                         <th>DL number</th>
@@ -49,16 +49,16 @@ const Profile=()=>{
                                                     className="rounded-circle"
                                                     />
                                                 <div className="ms-3">
-                                                    <p >{ ffile.first_name +" "+ ffile.last_name}</p>
-                                                    <p >{ ffile.username }</p>
-                                                    <p >{  ffile.email }</p>
+                                                    <p >Name : { ffile.first_name +" "+ ffile.last_name}</p>
+                                                    <p >Username : { ffile.username }</p>
+                                                    <p >Email : {  ffile.email }</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p>{ ffile.dob }</p>
-                                            <p>{ ffile.gender}</p>
-                                            <p>{ ffile.phone_number }</p>
+                                            <p>Data Of Birth : { ffile.dob }</p>
+                                            <p>Gender : { ffile.gender}</p>
+                                            <p>Contact Number : { ffile.phone_number }</p>
                                         </td>
                                         <td>
                                             <p>{ ffile.address }</p>

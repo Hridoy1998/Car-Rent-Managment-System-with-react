@@ -20,12 +20,24 @@ const NoticeList=()=>{
        });
     },[count]);
 
+    const eNotice=(id)=>()=>{
+        // setCount(count + 1)
+        // console.log(id);
+        // axios.get("http://127.0.0.1:8000/api//{id}",{params:{id:id}})
+        // .then(function (response) {
+        //     console.log(response)
+        // })
+        // .catch(function (error) {
+        //     alert(error)
+        // })
+        navigation('');
+    }
     const dNotice=(id)=>()=>{
         setCount(count + 1)
         console.log(id);
-        axios.get("http://127.0.0.1:8000/api/Unblock_Users/{id}",{params:{id:id}})
+        axios.get("http://127.0.0.1:8000/api/Admin_Notice_delete/{id}",{params:{id:id}})
         .then(function (response) {
-            alert("Successfully Unblock...")
+            alert("Successfully Delete...")
             console.log(response)
         })
         .catch(function (error) {
@@ -36,7 +48,7 @@ const NoticeList=()=>{
     const vNotice=(id)=>()=>{
         console.log(id);
         alert(id);
-        axios.get("http://127.0.0.1:8000/api/BlockUser_Details/{id}",{params:{id}})
+        axios.get("http://127.0.0.1:8000/api//{id}",{params:{id}})
         .then(function (res) {
             alert("View... ;-P")
         })
@@ -51,15 +63,9 @@ const NoticeList=()=>{
             <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>Profile Pic</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Address</th>
-                    <th>NID</th>
-                    <th>DL number</th>
-                    <th>Position</th>
+                    <th>Date</th>
+                    <th>Notice</th>
                     <th>Action</th>
-                    <th></th>
                 </tr>
             </thead>
                     <tbody>
@@ -67,34 +73,27 @@ const NoticeList=()=>{
                             notice.map(post=>(
                                     <tr key={post.id}>
                                         <td>
-                                            <div className="d-flex align-items-center">
-                                                <div className="ms-3">
-                                                    <p >{ post.first_name +" "+ post.last_name}</p>
-                                                    <p >{ post.username }</p>
-                                                    <p >{  post.email }</p>
-                                                </div>
-                                            </div>
+                                            <p>{ post.notice_date }</p>
                                         </td>
                                         <td>
-                                            <p>{ post.dob }</p>
-                                            <p>{ post.gender}</p>
-                                            <p>{ post.phone_number }</p>
+                                            <p>{ post.notice }</p>
                                         </td>
                                         <td>
-                                            <p>{ post.address }</p>
-                                        </td>
-                                        <td>
-                                            <p>{ post.nid_number }</p>
-                                        </td>
-                                        <td>
-                                            <span>{  post.dl_number }</span>
-                                        </td>
-                                        <td>{  post.type }</td>
-                                        <td>
-                                        <Button onClick={dNotice(post.id)}> DELETE</Button>
-                                        </td>
-                                        <td>
-                                        <Button onClick={vNotice(post.id)} >VIEW</Button>
+                                            <td>
+                                                <td>
+                                                <Button variant="primary" onClick={eNotice(post.id)}> EDIT</Button>
+                                                </td>
+                                            </td>
+                                            <td>
+                                                <td>
+                                                <Button variant="danger" onClick={dNotice(post.id)}> DELETE</Button>
+                                                </td>
+                                            </td>
+                                            <td>
+                                                <td>
+                                                <Button variant="primary" onClick={vNotice(post.id)} >VIEW</Button>
+                                                </td>
+                                            </td>
                                         </td>
                                     </tr>
                                     ))

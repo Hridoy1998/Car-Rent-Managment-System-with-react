@@ -21,6 +21,7 @@ const Login = ()=>{
                     {
                         alert("The User has been Block !");
                     }
+                    else{
                     var token = resp.data;
                     var user = {userId: token.userid, type:token.type, access_token:token.token};
                     localStorage.setItem('user',JSON.stringify(user));
@@ -35,10 +36,11 @@ const Login = ()=>{
                         alert("login successful..");
                         navigate('/Customer');
                     }
-                    else if(token.type=="Renter"){
+                    else{
                         alert("login successful..");
                         navigate('/Renter');
                     }
+                }
                     
                 }).catch(err=>{
                     console.log(err);

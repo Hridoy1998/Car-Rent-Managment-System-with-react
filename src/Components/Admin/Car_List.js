@@ -6,15 +6,16 @@ import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Adminnav from './nav';
 const CarList=()=>{
-    const [carList, serCarList] = useState([]);
+    const [carList, setCarList] = useState([]);
+    const [sta, setStatus] = useState([]);
     useEffect(() => {
        axios.get("http://127.0.0.1:8000/api/Cars_List")
        .then((result) => {
-        console.log(result)
-        serCarList(result.data);
+            var token = result.data;
+            setCarList(token);
        })
        .catch((error)=>{
-        alert(error)
+            alert(error)
        });
     },[]);
     return(
@@ -25,21 +26,16 @@ const CarList=()=>{
             <thead>
                 <tr>
                     <th>Car Pic</th>
-                    <th>Car Name</th>
-                    <th>Car Model</th>
-                    <th>Car Type</th>
-                    <th>Sit Number</th>
-                    <th>Car Color</th>
-                    <th>Car Buy Date</th>
                     <th>Car Details</th>
+                    <th>Car Condition</th>
                     <th>Car Number</th>
                     <th>Rent Price</th>
                     <th>Car Owner Name</th>
+                    <th>Rent Status</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>Action</th>
+                    <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
                     <tbody>
@@ -47,33 +43,53 @@ const CarList=()=>{
                             carList.map(post=>(
                                     <tr key={post.id}>
                                         <td>
-                                        <img src={post.pp} />
+                                        <img src={post.pp} alt="loading"/>
                                         </td>
                                         <td>
                                             <div className="d-flex align-items-center">
                                                 <div className="ms-3">
-                                                    
+                                                <p >Car Name    : { post.car_name }</p>
+                                                <p >Car Model   : { post.car_model }</p>
+                                                <p >Car Type    : { post.car_type }</p>
+                                                <p >Car Sit     : { post.sit_number }</p>
+                                                <p >Car Buy Date: { post.car_buy_date }</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
+                                            <p>
+                                                {post.car_details}
+                                            </p>
+                                        </td>
+                                        <td>
+
+                                            <p>
+                                                {post.car_number}
+                                            </p>
                                             
                                         </td>
                                         <td>
+                                            <p>
+                                                {post.rent_price}
+                                            </p>
                                             
                                         </td>
                                         <td>
-                                            
+                                            <p>
+                                                {post.car_owner_name}
+                                            </p>
                                         </td>
                                         <td>
-                                            
+                                            <p>
+                                                {post.rent_status}
+                                            </p>
                                         </td>
                                         <td></td>
                                         <td>
                                         <Button variant="primary"> EDIT</Button>
                                         </td>
                                         <td>
-                                        <Button variant="danger"> BLOCK</Button>
+                                        <Button variant="danger"> DELETE</Button>
                                         </td>
                                         <td>
                                         <Button variant="primary">VIEW</Button>

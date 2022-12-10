@@ -32,15 +32,15 @@ const BlockUser=()=>{
     }
 
     const vBlockUser=(id)=>()=>{
-        console.log(id);
-        alert(id);
-        axios.get("http://127.0.0.1:8000/api/BlockUser_Details/{id}",{params:{id}})
-        .then(function (res) {
-            alert("View... ;-P")
-        })
-        .catch(function (err) {
-            alert("something Worng...!")
-        })
+        // console.log(id);
+        // alert(id);
+        // axios.get("http://127.0.0.1:8000/api/BlockUser_Details/{id}",{params:{id}})
+        // .then(function (res) {
+        //     alert("View... ;-P")
+        // })
+        // .catch(function (err) {
+        //     alert("something Worng...!")
+        // })
     }
     return(
         <div>
@@ -49,37 +49,42 @@ const BlockUser=()=>{
             <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>Profile Pic</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Address</th>
-                    <th>NID</th>
-                    <th>DL number</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                    <th></th>
+                        <th>Profile Pic</th>
+                        <th>Personal Info</th>
+                        <th>Details</th>
+                        <th>Address</th>
+                        <th>NID</th>
+                        <th>DL number</th>
+                        <th>Position</th>
+                        <th>Action</th>
+                        <th></th>
                 </tr>
             </thead>
                     <tbody>
                         {
                             blockUser.map(post=>(
-                                    <tr key={post.id}>
+                                        <tr key={post.id}>
                                         <td>
-                                        <img src={post.pp} />
+                                        <img src={post.pp} alt="foo is coming "/>
                                         </td>
                                         <td>
                                             <div className="d-flex align-items-center">
+                                                <img
+                                                    src={post.pp}
+                                                    alt=""
+                                                    className="rounded-circle"
+                                                    />
                                                 <div className="ms-3">
-                                                    <p >{ post.first_name +" "+ post.last_name}</p>
-                                                    <p >{ post.username }</p>
-                                                    <p >{  post.email }</p>
+                                                    <p >Name : { post.first_name +" "+ post.last_name}</p>
+                                                    <p >Username : { post.username }</p>
+                                                    <p >Email : {  post.email }</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p>{ post.dob }</p>
-                                            <p>{ post.gender}</p>
-                                            <p>{ post.phone_number }</p>
+                                            <p>Data Of Birth : { post.dob }</p>
+                                            <p>Gender : { post.gender}</p>
+                                            <p>Contact Number : { post.phone_number }</p>
                                         </td>
                                         <td>
                                             <p>{ post.address }</p>
