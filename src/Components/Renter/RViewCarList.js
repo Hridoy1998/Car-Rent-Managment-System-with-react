@@ -3,39 +3,28 @@ import React from "react";
 import { useEffect,useState } from "react";
 import axios  from "axios";
 import Table from 'react-bootstrap/Table';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Adminnav from './nav';
-const CarList=()=>{
-    const [carList, setCarList] = useState([]);
-    const [sta, setStatus] = useState([]);
-    const [count, setCount] = useState(0);
-    useEffect(() => {
-       axios.get("http://127.0.0.1:8000/api/Cars_List")
-       .then((result) => {
-            var token = result.data;
-            setCarList(token);
-       })
-       .catch((error)=>{
-            alert(error)
-       });
-    },[count]);
 
-    const Dcar=(id)=>()=>{
-        console.log(id);
-        axios.get("http://127.0.0.1:8000/api/Delete_Car_By_Admin/{id}",{params:{id:id}})
-        .then(function (response) {
-            setCount(count + 1)
-            alert("Successfully Delete...")
-            console.log(response)
+import RenterNavbar from './RenterNavbar';
+
+const Carlist=()=>
+{
+    const [carData, setCarData] = useState([]);
+    useEffect(() => {
+        let user = JSON.parse(localStorage.getItem('user'));
+        var obj = {id:user.userId};
+        axios.post("http://localhost:8000/api/car_list",obj)
+        .then((result) => {
+         console.log(result)
+         setCarData(result.data);
         })
-        .catch(function (error) {
-            alert(error)
-        })
-    }
-    return(
+        .catch((error)=>{
+         alert(error)
+        });
+     },[]);
+         return(
         <div>
-            <Adminnav/>
-            <h1>This Is Car List Page</h1>
+            <RenterNavbar/>
+           
             <Table striped bordered hover>
             <thead>
                 <tr>
@@ -54,7 +43,7 @@ const CarList=()=>{
             </thead>
                     <tbody>
                         {
-                            carList.map(post=>(
+                            carData.map(post=>(
                                     <tr key={post.id}>
                                         <td>
                                         <img src={post.pp} alt="loading"/>
@@ -103,7 +92,7 @@ const CarList=()=>{
                                         <Button variant="primary"> EDIT</Button>
                                         </td>
                                         <td>
-                                        <Button variant="danger"onClick={Dcar(post.id)}> DELETE</Button>
+                                        <Button variant="danger"> DELETE</Button>
                                         </td>
                                         <td>
                                         <Button variant="primary">VIEW</Button>
@@ -116,4 +105,4 @@ const CarList=()=>{
         </div>
     )
 }
-export default CarList;
+export default Carlist;

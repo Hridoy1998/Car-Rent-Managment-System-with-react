@@ -6,22 +6,26 @@ import React, {Components} from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
-function HomeNave() {
+function RenterNavbar() {
     const navigate = useNavigate();
-    const goLogin=()=>{
-        navigate("/login");
+    const goProfile=()=>{
+      navigate("/dashboard_renter");
     }
-    const goRegistration=()=>{
-        navigate("/registration");
+   
+    const goNotice=()=>{
+      navigate("/notice");
+    }
+    const goLogOut=()=>{
+        navigate("/logout");
     }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-            <Button variant="outline-success" onClick={goLogin}>Login</Button>
-            <Button variant="outline-success" onClick={goRegistration}>Registration</Button>
+    
+            <Button variant="outline-success" onClick={goLogOut}>Logout</Button>
       </Container>
     </Navbar>
   );
 }
 
-export default HomeNave;
+export default RenterNavbar;

@@ -19,6 +19,7 @@ const Logout=()=>
             console.log(token);
             localStorage.removeItem('user');
             navigate('/login');
+
         }).catch(err=>{
             console.log(err);
         });
